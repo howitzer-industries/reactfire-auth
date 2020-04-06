@@ -9,6 +9,7 @@
     "firebase": "^7.13.2",
     "react": "^0.0.0-experimental-d7382b6c4",
     "react-dom": "^0.0.0-experimental-d7382b6c4",
+    "react-firebaseui": "^4.1.0",
     "react-scripts": "3.4.1",
     "reactfire": "^2.0.3"
   },

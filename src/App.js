@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import { FirebaseAppProvider, AuthCheck } from "reactfire";
 import { PreloadProvider } from "./PreloadProvider";
 import { AuthenticatedRequestOnLoad } from "./AuthenticatedRequestOnLoad";
+import { Login } from "./Login";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBvXq33jO7G_p7uYh3qjVCR18AxM-zp7As",
@@ -20,7 +21,7 @@ function App() {
       <PreloadProvider>
         <h1>Working!</h1>
         <Suspense fallback={<span>loading...</span>}>
-          <AuthCheck fallback={<span>login page</span>}>
+          <AuthCheck fallback={<Login></Login>}>
             <Suspense fallback={<span>loading...</span>}>
               <AuthenticatedRequestOnLoad></AuthenticatedRequestOnLoad>
             </Suspense>
