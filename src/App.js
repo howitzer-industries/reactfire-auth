@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 
-import { FirebaseAppProvider } from "reactfire";
+import { FirebaseAppProvider, AuthCheck } from "reactfire";
+import { PreloadProvider } from "./PreloadProvider";
+import { AuthenticatedRequestOnLoad } from "./AuthenticatedRequestOnLoad";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBvXq33jO7G_p7uYh3qjVCR18AxM-zp7As",
@@ -15,9 +17,16 @@ const firebaseConfig = {
 function App() {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      {/* <PreloadProvider> */}
-      <h1>Working!</h1>
-      {/* </PreloadProvider> */}
+      <PreloadProvider>
+        <h1>Working!</h1>
+        <Suspense fallback={<span>loading...</span>}>
+          <AuthCheck fallback={<span>login page</span>}>
+            <Suspense fallback={<span>loading...</span>}>
+              <AuthenticatedRequestOnLoad></AuthenticatedRequestOnLoad>
+            </Suspense>
+          </AuthCheck>
+        </Suspense>
+      </PreloadProvider>
     </FirebaseAppProvider>
   );
 }
