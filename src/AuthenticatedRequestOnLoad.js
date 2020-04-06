@@ -1,8 +1,14 @@
 import React from "react";
 
-import { useFirestore, useUser, useFirestoreCollection } from "reactfire";
+import {
+  useFirestore,
+  useUser,
+  useFirestoreCollection,
+  useAuth,
+} from "reactfire";
 
 export const AuthenticatedRequestOnLoad = (props) => {
+  const auth = useAuth();
   const user = useUser();
   const db = useFirestore();
 
@@ -16,6 +22,7 @@ export const AuthenticatedRequestOnLoad = (props) => {
     <>
       <h1>Making an authenticated request</h1>
       <h2>Returned {invitationsCollection.docs.length} invitations</h2>
+      <button onClick={() => auth.signOut()}>Sign Out</button>
     </>
   );
 };
