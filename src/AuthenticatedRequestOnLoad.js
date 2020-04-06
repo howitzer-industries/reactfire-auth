@@ -11,10 +11,11 @@ export const AuthenticatedRequestOnLoad = (props) => {
     .where("phoneNumber", "==", user.phoneNumber);
 
   const invitationsCollection = useFirestoreCollection(collectionRef);
+  console.log(invitationsCollection.docs);
   return (
     <>
       <h1>Making an authenticated request</h1>
-      <h2>Returned {invitationsCollection.length} invitations</h2>
+      <h2>Returned {invitationsCollection.docs.length} invitations</h2>
     </>
   );
 };
